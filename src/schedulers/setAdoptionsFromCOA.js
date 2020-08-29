@@ -3,23 +3,48 @@ const ServerErrors = require('../helpers/ServerErrors');
 const { Pets } = require('../helpers/mongoUtil');
 const { ref, ageMapping, optionMapping, petStatusMapping } = require('../helpers/fieldMapping');
 const configs = {
-  API_URL: 'https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL'
+  API_URL: 'https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL',
+  // statuses: ['OPEN', 'NONE', 'ADOPTED', 'OTHER', 'DEAD'],
+  statuses: ['OPEN'],
+  batch: 100
 };
 
-async function main(req, res) {
+async function main() {
   try {
-    const data = await getDataFromAPI(configs.API_URL);
-    await insertPet2MongoDB(data);
-
-    return res.json('ok');
+    await getDateInBatches(insertPet2MongoDB);
+    return Promise.resolve();
+    // return res.json('ok');
   } catch (err) {
     return Promise.reject(err);
   }
 }
 
+async function getDateInBatches(callback) {
+  try {
+    const { API_URL, batch, statuses } = configs;
+    for (let i = 0; i < statuses.length; i++) {
+      const status = statuses[i];
+      const data = [];
+      let offset = 0;
+      let rawData;
+      do {
+        rawData = await getDataFromAPI(`${API_URL}&$top=${batch}&$skip=${batch * offset}&animal_status=${status}`);
+        data.push(...rawData); // spread operator, like array flat
+        console.log(`pet_status[${status}]: ${(offset + 1) * batch}/${batch}`);
+        offset++;
+      } while (rawData.length !== 0);
+      callback(data);
+    }
+    return Promise.resolve();
+  } catch (err) {
+    return Promise.reject(err.stack);
+  }
+}
+
 async function insertPet2MongoDB(data) {
   try {
-    for (let i = 0; i < 10; i++) {
+    console.log(data.length);
+    for (let i = 0; i < data.length; i++) {
       const ele = data[i];
       const id = `${ele.animal_id}-${ele.animal_subid}`;
       await Pets.findOneAndUpdate({ id }, {
