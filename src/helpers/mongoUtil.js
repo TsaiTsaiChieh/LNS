@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dbName = 'testing';
+const dbName = 'LNS';
 const URL = `mongodb://localhost:27017/${dbName}`;
 // const assert = require('assert');
 
