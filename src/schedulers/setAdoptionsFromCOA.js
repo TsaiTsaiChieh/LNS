@@ -43,7 +43,6 @@ async function getDateInBatches(callback) {
 
 async function insertPet2MongoDB(data) {
   try {
-    console.log(data.length);
     for (let i = 0; i < data.length; i++) {
       const ele = data[i];
       const id = `${ele.animal_id}-${ele.animal_subid}`;
