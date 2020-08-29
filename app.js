@@ -1,13 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const Haven = require('domain-haven');
 
-app.get('/', function(req, res) {
-  res.json('ok');
-});
+
+app.use(Haven.haven());
+// Routers
+app.use('/scheduler', require('./src/routers/schedulers'));
 
 const port = process.env.PORT;
 app.listen(port, function()  {
   console.log(`Love Never Stray on port ${port}`);
 });
+
 module.exports = app;
