@@ -4,7 +4,10 @@ const URL = `mongodb://localhost:27017/${dbName}`;
 // const assert = require('assert');
 
 mongoose.connect(URL, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+  useCreateIndex: true
 });
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
