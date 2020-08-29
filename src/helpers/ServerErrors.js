@@ -20,6 +20,13 @@ class AxiosGetMethodError extends ExtendableError {
   }
 }
 
+class MongoDBError extends ExtendableError {
+  constructor(message = 'MongoDB 錯誤', status = 50001, isPublic = true, code = httpStatus.INTERNAL_SERVER_ERROR) {
+    super(message, status, isPublic, code);
+    // this.name = 'LoginError';
+  }
+}
 module.exports = {
-  AxiosGetMethodError
+  AxiosGetMethodError,
+  MongoDBError
 };
