@@ -1,7 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const Haven = require('domain-haven');
 
+
+app.use(Haven.haven());
 // Routers
 app.use('/scheduler', require('./src/routers/schedulers'));
 
