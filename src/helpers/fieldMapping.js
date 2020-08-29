@@ -5,7 +5,7 @@ const ref = {
 };
 
 function ageMapping(age) {
-  age = age.toLowerCase();
+  age = age ? age.toLowerCase() : age;
   switch (age) {
     case 'child':
       return 0;
@@ -17,7 +17,7 @@ function ageMapping(age) {
 }
 
 function optionMapping(option) {
-  option = option.toUpperCase();
+  option = option ? option.toLowerCase() : option;
   switch (option) {
     case 'F':
       return 0;
@@ -29,7 +29,7 @@ function optionMapping(option) {
 }
 
 function petStatusMapping(status) {
-  status = status.toLowerCase();
+  status = status ? status.toLowerCase() : status;
   switch (status) {
     case 'open':
       return 1;
