@@ -1,0 +1,62 @@
+/* global setting */
+
+@font-face {
+    font-family: 'MainText';
+    src: url('../fonts/TaipeiSansTCBeta-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MainText-Bold';
+    src: url('../fonts/TaipeiSansTCBeta-Bold.ttf') format('truetype');
+}
+
+:root {
+    --main-color: #8FD3E8 !important;
+    --light-gray: #F7F7F7 !important;
+    --second-color: #419FFF !important;
+    --third-color: #5868BA !important;
+}
+
+* {
+    font-family: MainText, "Microsoft JhengHei" !important;
+}
+
+nav {
+    z-index: 2000;
+    position: fixed;
+    margin-bottom: 0 !important;
+}
+
+.wrapper {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+}
+
+.logo img {
+    width: 35px;
+    height: 35px;
+    margin: auto;
+    margin-right: 10px;
+}
+
+#bs-example-navbar-collapse-3 {
+    position: relative;
+    width: 100%;
+}
+
+p.navbar-text {
+    display: block;
+    font-size: 1.2em;
+    line-height: 20px;
+    letter-spacing: .32em;
+    cursor: pointer;
+    width: auto;
+    margin-right: 2em;
+    margin-left: 2em;
+}
