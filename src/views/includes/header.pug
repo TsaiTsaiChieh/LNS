@@ -1,0 +1,27 @@
+meta(charset='UTF-8')
+meta(name='viewport' content='width=device-width,initial-scale=1')
+title 讓愛不流浪 | Love Never Stray
+link(rel='shortcut icon' href='./images/logo.png')
+link(rel='stylesheet' href='./css/reset.css')
+link(rel='stylesheet' href='./css/header.css')
+link(rel='stylesheet' href='./css/bootstrap.min.css')
+link(rel='stylesheet' href='./css/bootflat.css')
+nav.navbar.navbar-default(role='navigation')
+  .wrapper
+    .container-fluid
+      .navbar-header
+        button.navbar-toggle(type='button' data-toggle='collapse' data-target='#bs-example-navbar-collapse-3')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        .logo
+          img(src='./images/logo.png' alt='logo')
+          a.navbar-brand(href='./index.html') Love Never Stray
+      .collapse.navbar-collapse#bs-example-navbar-collapse-3
+        p.navbar-text.navbar-right
+          a.navbar-link(href) 登入
+        p.navbar-text.navbar-right
+          a.active.navbar-link(href) 認養
+        p.navbar-text.navbar-right
+          a.navbar-link(href) 主頁
