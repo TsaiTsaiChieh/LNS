@@ -6,15 +6,16 @@ const Haven = require('domain-haven');
 app.use(Haven.haven());
 app.use(express.static('./src/public'));
 // Routers
-app.use(require('./src/routers/index'));
-app.use('/scheduler', require('./src/routers/schedulers'));
+app.use(require('./src/routes/index'));
+app.use('/scheduler', require('./src/routes/schedulers'));
+app.use('/adoption', require('./src/routes/adoption'));
 // view engine
 app.set('views', './src/views');
 app.set('view engine', 'pug');
 
 const port = process.env.PORT;
 app.listen(port, function() {
-    console.log(`Love Never Stray on port ${port}`);
+  console.log(`LNS project on port ${port}`);
 });
 
 module.exports = app;
