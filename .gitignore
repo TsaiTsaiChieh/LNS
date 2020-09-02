@@ -4,3 +4,6 @@ Dockerfile
 README.md
 npm-debug.log
 package-lock.json
+
+# Optional eslint cache
+.eslintcache
