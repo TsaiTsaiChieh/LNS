@@ -24,4 +24,4 @@ module.exports = {
     semi: ['error', 'always'],
     'no-useless-escape': 0
   }
-}
+};
